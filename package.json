@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@trpc/client": "^10.38.3",
+    "@trpc/server": "^10.38.3",
+    "zod": "^3.22.2"
+  },
+  "modules": "node"
+}
