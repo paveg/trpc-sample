@@ -1,8 +1,16 @@
 {
+  "scripts": {
+    "format": "yarn run biome format ./ --write",
+    "check": "yarn run biome check ./ --apply"
+  },
   "dependencies": {
     "@trpc/client": "^10.38.3",
     "@trpc/server": "^10.38.3",
     "zod": "^3.22.2"
   },
-  "modules": "node"
+  "modules": "node",
+  "devDependencies": {
+    "@biomejs/biome": "^1.2.2"
+  },
+  "license": "MIT"
 }
