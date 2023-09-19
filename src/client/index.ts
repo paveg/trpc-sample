@@ -10,17 +10,21 @@ const trpc = createTRPCProxyClient<AppRouter>({
 });
 
 async function main() {
+  const name = 'name';
+
   const users = await trpc.userList.query()
   console.info('Users: ', users);
 
   const createdUser = await trpc.userCreate.mutate({
-    name: 'test'
+    name,
   });
   console.log('Created User: ', createdUser);
 
+  const user = await trpc.userFindBy.query({ name })
+  console.info('User: ', user);
 
-  const knownUsers = await trpc.userList.query()
-  console.info('Users: ', knownUsers)
+  const searchedUsers = await trpc.userWhere.query({ name })
+  console.info('SearchedUsers: ', searchedUsers);
 }
 
 main().catch(console.error);

@@ -8,6 +8,21 @@ const appRouter = router({
     const users = await virtualDB.user.findMany();
     return users;
   }),
+  userFindById: publicProcedure.input(z.string()).query(async (opts) => {
+    const { input } = opts;
+    const user = await virtualDB.user.findById(input);
+    return user;
+  }),
+  userFindBy: publicProcedure.input(z.object({ name: z.string().optional(), id: z.string().optional() })).query(async (opts) => {
+    const { input } = opts;
+    const user = await virtualDB.user.findBy(input);
+    return user;
+  }),
+  userWhere: publicProcedure.input(z.object({ name: z.string().optional() })).query(async (opts) => {
+    const { input } = opts;
+    const users = await virtualDB.user.findWhere(input);
+    return users;
+  }),
   userCreate: publicProcedure.input(z.object({ name: z.string() })).mutation(async (opts) => {
     const { input } = opts;
     const user = await virtualDB.user.create(input);
